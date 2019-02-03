@@ -33,6 +33,7 @@ td {
   background-color: rgb(163, 163, 163);
   color: white;
   width: 100%;
+  transition: 0.5s ease;
 }
 
 #generate:hover {
@@ -45,6 +46,10 @@ td {
   height: 20%;
   font-size: 20px;
   text-align: center;
+}
+
+#copy {
+  transition: 0.5s ease;
 }
 
 #copy:hover {

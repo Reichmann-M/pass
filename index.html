@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link rel="icon" href="https://img.icons8.com/ios-glyphs/30/000000/key.png">
+  <title>Password Generator</title>
 </head>
 
 <body>
@@ -25,15 +26,23 @@
       </tr>
       <tr>
         <td>Include Numbers:</td>
-        <td><input type="checkbox" id="numbers" checked onchange="numbersChanged()"> (e.g. 123456)</td>
+        <td><label><input type="checkbox" id="numbers" checked onchange="numbersChanged()" >(e.g. 123456) </label></td>
+      </tr>
+      <tr>
+        <td>Include Lowercase Characters:</td>
+        <td><label><input type="checkbox" id="lowercase" checked onchange="lowercaseChanged()"> (e.g. abcdef) </label></td>
       </tr>
       <tr>
         <td>Include Uppercase Characters:</td>
-        <td><input type="checkbox" id="uppercase" checked onchange="uppercaseChanged()"> (e.g. ABCDEF)</td>
+        <td><label><input type="checkbox" id="uppercase" checked onchange="uppercaseChanged()"> (e.g. ABCDEF)</label></td>
       </tr>
       <tr>
         <td>Exclude Similar Characters:</td>
-        <td><input type="checkbox" id="similar" checked onchange="similarChanged()"> (e.g. i,l,L,o,0,O)</td>
+        <td><label><input type="checkbox" id="similar" checked onchange="similarChanged()"> (e.g. i,l,L,o,0,O)</label></td>
+      </tr>
+      <tr>
+        <td>Include Symbols:</td>
+        <td><label><input type="checkbox" id="symbols" unchecked onchange="symbolChanged()"> (e.g. @#$%)</label></td>
       </tr>
       <tr>
         <td></td>

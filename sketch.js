@@ -1,4 +1,6 @@
-const chars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0","1","2","3","4","5","6","7","8","9"];
+const chars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+const nums = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const syms = ["@", "#", "$", "%", "_", "-", "+", "*"];
 const similars = ["i", "l", "1", "L", "o", "0", "O"];
 
 let pass;
@@ -7,35 +9,51 @@ let x;
 let editPass;
 let length = 16;
 let numberChecked = true;
+let lowercaseChecked = true;
 let uppercaseChecked = true;
+let symbolChecked = false;
 let similarChecked = true;
 
 function generatePass() {
-  pass = '';
-  for (let i = 0; i < length; i++) {
-    generateChar();
-    pass = pass + x;
+  if (!numberChecked && !lowercaseChecked && !uppercaseChecked && !symbolChecked) {
+    alert('You must select at least one character set!');
+  } else {
+    pass = '';
+    for (let i = 0; i < length; i++) {
+      generateChar();
+      pass = pass + x;
+    }
+    editPass.value = pass;
   }
-  editPass.value = pass;
 }
 
 function generateChar() {
-  let index;
   let temp;
-  if (numberChecked) {
-    index = 35;
-  } else {
-    index = 25;
-  }
-  if (uppercaseChecked) {
-    let ccase = round(random(1));
-    if (ccase == 0) {
-      temp =  chars[round(random(0, index))].toUpperCase();
+  var achieved = false;
+  // 1 - Lower Characters | 2 - Upper Characters | 3 - Numbers | 4 - Symbols
+  while (!achieved) {
+    let choice = round(random(1, 4));
+    if (choice == 1) {
+      if (lowercaseChecked) {
+        temp = getLowerCharacter();
+        achieved = true;
+      }
+    } else if (choice == 2) {
+      if (uppercaseChecked) {
+        temp = getUpperCharacter();
+        achieved = true;
+      }
+    } else if (choice == 3) {
+      if (numberChecked) {
+        temp = getNumber();
+        achieved = true;
+      }
     } else {
-      temp = chars[round(random(0, index))];
+      if (symbolChecked) {
+        temp = getSymbol();
+        achieved = true;
+      }
     }
-  } else {
-    temp = chars[round(random(0, index))];
   }
   if (similarChecked) {
     let same = false;
@@ -53,6 +71,22 @@ function generateChar() {
   } else {
     x = temp;
   }
+}
+
+function getLowerCharacter() {
+  return chars[round(random(25))];
+}
+
+function getUpperCharacter() {
+  return chars[round(random(25))].toUpperCase();
+}
+
+function getNumber() {
+  return round(random(9));
+}
+
+function getSymbol() {
+  return syms[round(random(syms.length - 1))];
 }
 
 // ------------------------------------------------
@@ -73,6 +107,14 @@ function numbersChanged() {
   }
 }
 
+function lowercaseChanged() {
+  if (lowercaseChecked) {
+    lowercaseChecked = false;
+  } else {
+    lowercaseChecked = true;
+  }
+}
+
 function uppercaseChanged() {
   if (uppercaseChecked) {
     uppercaseChecked = false;
@@ -86,6 +128,14 @@ function similarChanged() {
     similarChecked = false;
   } else {
     similarChecked = true;
+  }
+}
+
+function symbolChanged() {
+  if (symbolChecked) {
+    symbolChecked = false;
+  } else {
+    symbolChecked = true;
   }
 }
 

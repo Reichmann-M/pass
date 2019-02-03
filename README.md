@@ -9,3 +9,5 @@ Optional Settings:
 Extra: 
 1. Button to copy to clipboard
 2. Text to inform about password security issues
+
+Host: https://reichmann-m.github.io/pass/

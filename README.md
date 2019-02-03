@@ -3,8 +3,10 @@
 Optional Settings:
 
 1. Include Numbers
-2. Include Uppercase Characters next to default lowercase ones
-3. Exlude Similar Characters
+2. Include Lowercase Characters
+3. Include Uppercase Characters
+4. Include Symbols
+5. Exlude Similar Characters
 
 Extra: 
 1. Button to copy to clipboard
